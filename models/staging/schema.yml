@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: stg_shopify_orders
+    description: "Staging table for Shopify orders"
+    columns:
+      - name: order_id
+        data_type: bigint
+        description: "Unique identifier for the order"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_type: bigint
+        description: "Unique identifier for the customer"
+        tests:
+          - not_null
+
+      - name: items
+        data_type: varchar[]
+        description: "List of items in the order"
+
+      - name: order_date
+        data_type: date
+        description: "Date when the order was placed"
+
+  - name: stg_shopify_refunds
+    description: "Staging table for Shopify refunds"
+    columns:
+      - name: refund_id
+        data_type: bigint
+        description: "Unique identifier for the refund"
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        data_type: bigint
+        description: "Unique identifier for the order associated with the refund"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_type: bigint
+        description: "Unique identifier for the customer"
+        tests:
+          - not_null
+
+      - name: product_id
+        data_type: bigint
+        description: "Unique identifier for the product being refunded"
+        tests:
+          - not_null
+
+      - name: refund_quantity
+        data_type: bigint
+        description: "Quantity of the product being refunded"
+
+      - name: refund_amount
+        data_type: bigint
+        description: "Amount of money refunded"
+
+      - name: refund_date
+        data_type: date
+        description: "Date when the refund was processed"

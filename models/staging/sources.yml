@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: shopify
+    description: "Main data source for the project."
+    database: data_plumber_dev
+    schema: main
+    tables:
+      - name: shopify_orders
+        description: "Table containing Shopify order data."
+        columns:
+          - name: order_id
+            description: "Primary key for orders."
+            tests:
+              - unique
+              - not_null
+
+      - name: shopify_refunds
+        description: "Table containing Shopify refund data."
+        columns:
+          - name: refund_id
+            description: "Primary key for refunds."
+            tests:
+              - unique
+              - not_null

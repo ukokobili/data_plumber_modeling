@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fct_shopify_orders
+    description: >
+      Final analytical model for Shopify orders with metrics for quantities and revenues,
+      accounting for refunds and excluding specific products (product_id = 2).
+    columns:
+      - name: order_id
+        data_type: bigint
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_type: bigint
+        description: ""
+        tests:
+          - not_null
+
+      - name: order_date
+        data_type: date
+        description: ""
+
+      - name: customer_type
+        data_type: string
+        description: >
+          Classification of customers as either 'New Customer' (first order within the last 30 days)
+          or 'Existing Customer'
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['New Customer', 'Returning Customer']
+
+      - name: total_quantity_sold
+        data_type: bigint
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 10000  # Adjust based on your business logic
+
+      - name: total_revenue
+        data_type: hugeint
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000000  # Adjust based on your business logic
+
+      - name: refund_quantity
+        data_type: hugeint
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000  # Adjust based on your business logic
+
+      - name: refund_amount
+        data_type: hugeint
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 100000  # Adjust based on your business logic
+
+      - name: net_quantity_sold
+        data_type: hugeint
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 10000  # Adjust based on your business logic
+
+      - name: net_revenue
+        data_type: decimal(38,2)
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000000  # Adjust based on your business logic
+
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "total_quantity_sold - refund_quantity = net_quantity_sold"
+          
+      - dbt_utils.expression_is_true:
+          expression: "total_revenue - refund_amount = net_revenue"
