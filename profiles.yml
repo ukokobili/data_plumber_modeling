@@ -2,14 +2,12 @@ data_plumber_model:
   outputs:
     dev:
       type: duckdb
-      path: "md:data_plumber_dev?motherduck_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVrb2tvYmlsaS5qYWNvYkBnbWFpbC5jb20iLCJzZXNzaW9uIjoidWtva29iaWxpLmphY29iLmdtYWlsLmNvbSIsInBhdCI6ImxENERweUl2VUVfZFYtVVBVa1UyLUNqeF92UWJZM3VGZXpUdWF4eUVlcnciLCJ1c2VySWQiOiJlNjkwMGFiYy1lYzQ2LTRlMTktOWViNi0xNWNmODY5ZmM5M2EiLCJpc3MiOiJtZF9wYXQiLCJyZWFkT25seSI6ZmFsc2UsInRva2VuVHlwZSI6InJlYWRfd3JpdGUiLCJpYXQiOjE3NDA2NzY5NTksImV4cCI6MTc0MTk3Mjk1OX0.f9Sw6e4oS7eyXyndzXR2ZtsFPCtLqY5J85FZT1egiPU"
+      path: "md:data_plumber_dev?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
       threads: 1
-
+    
     prod:
       type: duckdb
-      path: "md:data_plumber_prod?motherduck_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVrb2tvYmlsaS5qYWNvYkBnbWFpbC5jb20iLCJzZXNzaW9uIjoidWtva29iaWxpLmphY29iLmdtYWlsLmNvbSIsInBhdCI6ImxENERweUl2VUVfZFYtVVBVa1UyLUNqeF92UWJZM3VGZXpUdWF4eUVlcnciLCJ1c2VySWQiOiJlNjkwMGFiYy1lYzQ2LTRlMTktOWViNi0xNWNmODY5ZmM5M2EiLCJpc3MiOiJtZF9wYXQiLCJyZWFkT25seSI6ZmFsc2UsInRva2VuVHlwZSI6InJlYWRfd3JpdGUiLCJpYXQiOjE3NDA2NzY5NTksImV4cCI6MTc0MTk3Mjk1OX0.f9Sw6e4oS7eyXyndzXR2ZtsFPCtLqY5J85FZT1egiPU"
+      path: "md:data_plumber_prod?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
       threads: 4
-
-  target: dev
-
   
+  target: dev
