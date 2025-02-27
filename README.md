@@ -1,7 +1,7 @@
 # A Detailed Analytics Pipeline for Analyzing Shopify Orders and Refunds  
 **Final Submission**  
 
-![](https://github.com/ukokobili/delayed_flights/blob/main/assets/deleyed_flight.jpg)
+![](https://github.com/ukokobili/data_plumber_modeling/blob/main/images/dbt-dag.png)
 
 ## Table of Contents  
 1. [Introduction](#introduction)  
