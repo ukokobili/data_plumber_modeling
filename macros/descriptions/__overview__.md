@@ -3,7 +3,7 @@
 # Welcome to the Shopify Order Models Documentation
 
 ## **What does this documentation cover?**
-The documentation included here details the design of the SVG tables and views available via [DataPlumber](https://dataplumbers.co/) For more information on how these models are built, please see [the github repository.](https://github.com/DataPlumber/svg_models)
+The documentation included here details the design of the SVG tables and views available via [DataPlumber](https://dataplumbers.co/) For more information on how these models are built, please see [the github repository.](https://github.com/ukokobili/data_plumber_modeling)
 
 ## **How do I use these docs?**
 The easiest way to navigate this documentation is to use the Quick Links below. These links will take you to the documentation for each table, which contains a description, a list of the columns, and other helpful information.

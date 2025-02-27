@@ -8,20 +8,20 @@ models:
     columns:
       - name: order_id
         data_type: bigint
-        description: ""
+        description: "Unique identifier for each order."
         tests:
           - unique
           - not_null
 
       - name: customer_id
         data_type: bigint
-        description: ""
+        description: "Unique identifier for each customer."
         tests:
           - not_null
 
       - name: order_date
         data_type: date
-        description: ""
+        description: "Date when the order was placed."
 
       - name: customer_type
         data_type: string
@@ -34,7 +34,7 @@ models:
 
       - name: total_quantity_sold
         data_type: bigint
-        description: ""
+        description: "Total quantity of items sold in the order."
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
@@ -42,7 +42,7 @@ models:
 
       - name: total_revenue
         data_type: hugeint
-        description: ""
+        description: "Total revenue generated from the order."
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
@@ -50,7 +50,7 @@ models:
 
       - name: refund_quantity
         data_type: hugeint
-        description: ""
+        description: "Quantity of items refunded from the order."
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
@@ -58,7 +58,7 @@ models:
 
       - name: refund_amount
         data_type: hugeint
-        description: ""
+        description: "Total amount refunded from the order."
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
@@ -66,7 +66,7 @@ models:
 
       - name: net_quantity_sold
         data_type: hugeint
-        description: ""
+        description: "Net quantity of items sold after refunds."
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
@@ -74,7 +74,7 @@ models:
 
       - name: net_revenue
         data_type: decimal(38,2)
-        description: ""
+        description: "Net revenue generated after refunds."
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
